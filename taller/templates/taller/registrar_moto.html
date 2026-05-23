@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Moto - MotoGPRO</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; max-width: 500px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px;}
+        .form-control { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; padding: 10px 15px; border: none; cursor: pointer; width: 100%; font-size: 16px;}
+        button:hover { background-color: #218838; }
+        .btn-volver { display: block; text-align: center; margin-top: 15px; text-decoration: none; color: #007bff; }
+    </style>
+</head>
+<body>
+
+    <h1>Ingresar Nueva Motocicleta</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Guardar Vehículo</button>
+    </form>
+
+    <a href="{% url 'lista_motos' %}" class="btn-volver">Volver al Inventario</a>
+
+</body>
+</html>

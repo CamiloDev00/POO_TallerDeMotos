@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión - MotoGPRO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .form-group { margin-bottom: 15px; text-align: left;}
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px;}
+        .form-control { width: 100%; padding: 8px; box-sizing: border-box; }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #0056b3; }
+        .error { color: red; font-size: 14px; margin-bottom: 15px;}
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>MotoGPRO</h2>
+        <p>Acceso al Sistema</p>
+
+        {% if form.errors %}
+            <p class="error">Usuario o contraseña incorrectos.</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Usuario:</label>
+                <input type="text" name="username" class="form-control" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
+
+</body>
+</html>

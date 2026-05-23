@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario - MotoGPRO</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+
+    <h1>Inventario de Motocicletas</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Patente</th>
+                <th>Marca y Modelo</th>
+                <th>Cilindrada</th>
+                <th>Clasificación</th>
+                <th>DNI Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for moto in motos %}
+            <tr>
+                <td>{{ moto.patente }}</td>
+                <td>{{ moto.marca }} {{ moto.modelo }}</td>
+                <td>{{ moto.cilindrada }} cc</td>
+                <td>{{ moto.clasificar_cilindrada }}</td>
+                <td>{{ moto.dni_cliente }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No hay motocicletas registradas en el inventario.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="{% url 'logout' %}" method="post" style="display:inline-block; float: right;">
+        {% csrf_token %}
+        <button type="submit" style="padding: 10px; background-color: #dc3545; color: white; border: none; cursor: pointer;">Cerrar Sesión</button>
+    </form>
+
+</body>
+</html>
